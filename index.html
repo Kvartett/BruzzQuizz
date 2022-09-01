@@ -15,13 +15,13 @@
         </div>
         
     </header>
-    <main>
+    <!--<main>
         <div class="personalquizz">
             <p>Você não criou nenhum quizz ainda :(</p>
             <button>Criar Quizz</button>
         </div>
         <ul class="quizzlist">
-            <!-- <li class="serverquizz">
+             <li class="serverquizz">
                 <div class="shadow">
                     <div class="namequizz">
                         narutin de Cria
@@ -29,9 +29,9 @@
                 </div>   
                     <img src="https://i.pinimg.com/736x/df/91/02/df91027b7859de1d4e5d2684604737d5.jpg" alt="">
                 
-            </li> -->
+            </li>
         </ul>
-    </main>
+    </main>-->
     
     <div class="screen2 hide">
         <div class="choice1">
@@ -58,23 +58,49 @@
                 </div>
             </div>
         </div>
-        <!--
-            <div class="screen3 hide"
-                <div class="title">
-                <h2>
-                    Comece pelo começo
-                </h2>
+    </div>
+        <div class="screen31 hide">
+            <div class="title">
+            <h2>
+                Comece pelo começo
+            </h2>
             </div>
             <div class="basic-infos">
-                <input type="text" placeholder="Título do seu quizz">
-                <input type="text" placeholder="URL da imagem do seu quizz"> 
-                <input type="text" placeholder="Quantidade de perguntas do quizz">
-                <input type="text" placeholder="Quantidade de níveis do quizz">
+                <input type="text" id="title" placeholder="Título do seu quizz">
+                <input type="text" id="image" placeholder="URL da imagem do seu quizz"> 
+                <input type="text" id="questions" placeholder="Quantidade de perguntas do quizz">
+                <input type="text" id="levels" placeholder="Quantidade de níveis do quizz">
             </div>
-            <div class="button">
-                Prosseguir para criar perguntas
+            <div class="button" onclick="createQuizz()">
+                    Prosseguir para criar perguntas
             </div>
-        </div>-->
+        </div>
+        <div class="screen32">
+            <div class="title">
+            <h2>Crie suas perguntas</h2>
+            </div>
+            <div class="questions">
+                <h2>Pergunta 1</h2>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                <h2>Resposta Correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+                <h2>Respostas Incorretas</h2>
+                <div class="incorrect">
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="text" placeholder="URL da imagem 1">
+                </div>
+                <div class="incorrect">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="text" placeholder="URL da imagem 2">
+                </div>
+                <div class="incorrect">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="text" placeholder="URL da imagem 3">
+                </div>
+            </div>
+        </div>
     
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

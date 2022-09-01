@@ -1,5 +1,5 @@
 
-function getApiQuizz(){
+/*function getApiQuizz(){
     let promisse = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
     promisse.then(putApiQuizz)
     promisse.catch()
@@ -21,6 +21,18 @@ function putApiQuizz(answer){
     </li>`
     }
 }
-getApiQuizz()
+getApiQuizz()*/
+
+function createQuizz(){           /*collects the values needed for the creation of the Quizz*/
+    const title = document.getElementById('title').value;
+    const image = document.getElementById('image').value;
+    const numberQuestions = document.getElementById('questions').value;
+    const levels = document.getElementById('levels').value;
+    const screen3 = document.querySelector('.screen31');
+    screen3.classList.add('hide');
+    questionsQuizz(title,image,numberQuestions,levels); 
+}
+
+
 
 
