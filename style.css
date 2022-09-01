@@ -247,14 +247,15 @@ input {
     top:158px;
     left:0;
     padding-left: 20px;
+    margin-bottom: 20px;
 }
 
 .questions h2 {
-    margin-bottom: 20px;
-    margin-top: 30px;
+    margin-bottom: 15px;
+    margin-top: 25px;
 }
 .incorrect {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 760px) {
