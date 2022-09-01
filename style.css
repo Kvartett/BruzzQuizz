@@ -5,16 +5,98 @@
     box-sizing: border-box;
 }
 body{
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
 h2{ 
     font-size: 20px;
     color: black;
     font-weight: 700;
 }
+
+
+.header {
+    background-color: red;
+    width: 100%;
+    height: 69px;
+}
+
+.choice1 {
+    background-image: url(./img/potterhead.png);
+    width: 100%;
+    height: 142px;
+    display: inline-block;
+    position: relative;
+} 
+
+.choice1 img {
+    width: 100%;
+    height: 100%;
+}
+
+.choice1 div {
+    color: #FFFFFF;
+    height: 54px;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    position: absolute;
+    top: 60px;
+    left: 25%;
+    left: center;
+    text-align: center;
+}
+
+.quizz {
+    width: 760px;
+    height: 676px;
+    padding: 18px 35px 23px 35px;
+    margin: 0 auto;
+}
+
+.quizz-header {
+    background-color: #434CA0;
+    width: 100%;
+    height: 138px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.quizz-content {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.quizz-content img {
+    width: 330px;
+    height: 175px;
+    margin-bottom: 9px;
+}
+
+.picture div {
+    color: #000000;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
 header{
     width: 100%;
     height: 69px;
@@ -103,6 +185,9 @@ header h1 {
     text-align: center;
     word-break: break-all;
 }
+.hide {
+    display: none;
+}
 .title {
     position: absolute;
     width: 195px;
@@ -151,4 +236,31 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+@media (max-width: 760px) {
+    .quizz {
+        width: 100vw;
+        height: 436px;
+        padding: 18px 17px 11px 17px;
+        margin-bottom: 12px;
+    }
+
+    .quizz-header {
+        width: 100vw;
+        font-size: 19px;
+        line-height: 22px;
+    }
+
+    .quizz-content img {
+        width: 163px;
+        height: 113px;
+    }
+
+    .picture div {
+        font-size: 13px;
+        line-height: 15px;
+    }
+
 }
