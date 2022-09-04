@@ -1,4 +1,14 @@
 
+function changeToTest(){
+    alert('adicionar a mudança para o jogo do quizz selecionado')
+    document.querySelector('.screen2').classList.remove('hide')
+    document.querySelector('.firstscreen').classList.add('hide')
+}
+function changeScreen31(){
+    document.querySelector('.firstscreen') .classList.add('hide')
+
+    document.querySelector('.screen31').classList.remove('hide')
+}
 function getApiQuizz(){
     let promisse = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
     promisse.then(putApiQuizz)
@@ -10,7 +20,7 @@ function putApiQuizz(answer){
     let quizzul = document.querySelector('.quizzlist')
     for(let i = 0; i < 8; i++){
 
-        quizzul.innerHTML+=` <li class="serverquizz">
+        quizzul.innerHTML+=` <li onclick="changeToTest()" class="serverquizz">
         <div class="shadow">
             <div class="namequizz">
                 ${quizzapi[i].title}

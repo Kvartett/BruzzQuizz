@@ -83,14 +83,7 @@ h2{
 
 .quizz-content img {
     width: 330px;
-    height: 175px;
-    margin-bottom: 9px;
-}
-
-.picture div {
-    color: #000000;
-    font-weight: 700;
-    font-size: 20px;
+    height: 175px; font-weight: 700;
     line-height: 23px;
     display: flex;
     align-items: center;
@@ -117,8 +110,9 @@ header h1 {
     align-items: center;
 }
 
-.personalquizz{
-    margin: 40px 0;
+.personalquizz ,.personalquizzfull{
+    margin-top: 30px;
+    margin-bottom: 50px;
     width: 1051px;
     height: 181px;
     background: #FAFAFA;
@@ -130,6 +124,22 @@ header h1 {
     align-items: center;
     
 }
+.allQuizz ion-icon{
+    color: #EC362D;
+    font-size: 30px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.allQuizz{
+    width: 1051px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+}
+    
+
 .personalquizz p{
     font-weight: 400;
     font-size: 20px;
@@ -148,6 +158,15 @@ header h1 {
     background: #FAFAFA;
     border: 1px dashed #EC362D;
     border-radius: 50px;
+    cursor: pointer;
+
+}
+.allpersonalquizz{
+    width: 1051px;
+    height: 382px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
 
 }
 .quizzlist{
@@ -166,6 +185,9 @@ header h1 {
 .quizzlist li{
     position: relative;
     
+}
+.quizzlist li:hover{
+    cursor: pointer;
 }
 .shadow{
     position: absolute;

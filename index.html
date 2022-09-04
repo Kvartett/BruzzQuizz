@@ -15,22 +15,41 @@
         </div>
         
     </header>
-    <main>
-        <div class="personalquizz">
-            <p>Você não criou nenhum quizz ainda :(</p>
-            <button>Criar Quizz</button>
-        </div>
-        <ul class="quizzlist">
-             <li class="serverquizz">
-                <div class="shadow">
-                    <div class="namequizz">
-                        narutin de Cria
-                    </div>
-                </div>   
-                    <img src="https://i.pinimg.com/736x/df/91/02/df91027b7859de1d4e5d2684604737d5.jpg" alt="">
+    <main >
+        <div class="firstscreen">
+            <div class="personalquizz hide">
+                <p>Você não criou nenhum quizz ainda :(</p>
+                <button onclick="changeScreen31()">Criar Quizz</button>
+            </div>
+            <div class="personalquizzfull">
+                <div class="allQuizz">
+                    <h1>Seus Quizzes</h1>
+                    <ion-icon onclick="changeScreen31()" name="add-circle-sharp"></ion-icon>
+                </div>
+                <ul class="allpersonalquizz">
+                    <li onclick="changeToTest()" class="serverquizz">
+                        <div class="shadow">
+                            <div class="namequizz">
+                            aoba
+                            
+                            </div>
+                        </div>   
+                        <img src="./img/cat.png" alt="">
+                        
+                    </li>
+                </ul>
                 
-            </li>
-        </ul>
+                
+            </div>
+            <div class="allQuizz">
+                <h1>Todos os Quizzes</h1>
+            </div>
+            <ul class="quizzlist">
+                
+            
+            </ul>
+        </div>
+       
     </main>
     
     <div class="screen2 hide">

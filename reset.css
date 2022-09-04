@@ -20,16 +20,8 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-<<<<<<< HEAD
-<<<<<<< HEAD
-	/*font: inherit;*/
-=======
-	font: inherit;
->>>>>>> 15ce5e519a285ef2c068c91b2ab565ba641edde7
-=======
-	font: inherit;
->>>>>>> 04491d6a24aedf44016da38cf7cda5b1f628b7a2
 	vertical-align: baseline;
+	marker: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
