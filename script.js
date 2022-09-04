@@ -1,5 +1,5 @@
 
-function getApiQuizz(){
+/*function getApiQuizz(){
     let promisse = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
     promisse.then(putApiQuizz)
     promisse.catch()
@@ -21,10 +21,9 @@ function putApiQuizz(answer){
     </li>`
     }
 }
-getApiQuizz()
+getApiQuizz()*/
 
 function createQuizz(){           /*collects the values needed for the creation of the Quizz*/
-    //const content = button.parentNode;
     const title = `${document.getElementById('title').value}`;
     const image = `${document.getElementById('image').value}`;
     const numberQuestions = document.getElementById('questions').value;
@@ -32,19 +31,15 @@ function createQuizz(){           /*collects the values needed for the creation 
     const screen31 = document.querySelector('.screen31');
     if (title.length < 20 || title.length > 65){  /*verifications*/
         failed();
-        window.location.reload();
     }
     if (checkUrl(image)){
         failed();
-        window.location.reload();
     }
     if (numberQuestions < 3){
         failed();
-        window.location.reload();
     }
     if (levels < 2){
         failed();
-        window.location.reload();
     }
     screen31.classList.add('hide');
     screen32(numberQuestions);      /*inserts the templates in the HTML*/
@@ -70,38 +65,47 @@ function screen32(numberQuestions){
     for (i=2; i<=numberQuestions; i++){
         showScreen.innerHTML += templateQuestion(i);
     }
+    showScreen.innerHTML += templateButton();
 }
 
-let templateQuestions = (i) => `<div class="questions">
+
+
+let templateQuestions = (i) => `<div class="questions" data-identifier="question-form">
 <h2>Pergunta <span>${i}</span></h2>
-    <input type="text" placeholder="Texto da pergunta">
-    <input type="text" placeholder="Cor de fundo da pergunta">
+    <input id ="questionText${i}" type="text" placeholder="Texto da pergunta">
+    <input id="questionColor${i}" type="color" value="#ffffff">
+    <label for="questionColor${i}">Cor de fundo da pergunta</label>
 <h2>Resposta Correta</h2>
-    <input type="text" placeholder="Resposta correta">
-    <input type="text" placeholder="URL da imagem">
+    <input id="rightAnswer${i}" type="text" placeholder="Resposta correta">
+    <input id="rightImage${i}" type="text" placeholder="URL da imagem">
 <h2>Respostas Incorretas</h2>
 <div class="incorrect">
-    <input type="text" placeholder="Resposta incorreta 1">
-    <input type="text" placeholder="URL da imagem 1">
+    <input id="wrongAnswer1${i}" type="text" placeholder="Resposta incorreta 1">
+    <input id="wrongImage1${i}" type="text" placeholder="URL da imagem 1">
 </div>
 <div class="incorrect">
-    <input type="text" placeholder="Resposta incorreta 2">
-    <input type="text" placeholder="URL da imagem 2">
+    <input id="wrongAnswer2${i}" type="text" placeholder="Resposta incorreta 2">
+    <input id="wrongImage2${i}" type="text" placeholder="URL da imagem 2">
 </div>
 <div class="incorrect">
-    <input type="text" placeholder="Resposta incorreta 3">
-    <input type="text" placeholder="URL da imagem 3">
+    <input id="wrongAnswer3${i}" type="text" placeholder="Resposta incorreta 3">
+    <input id="wrongImage3${i}" type="text" placeholder="URL da imagem 3">
 </div>
 </div>`;
 
 let templateQuestion = (i) => `<div class="question">
 <h2>Pergunta <span>${i}</span></h2>
-<ion-icon name="create-outline" onclick="openQuestions(this)"></ion-icon>
+<ion-icon name="create-outline" onclick="openQuestions(this)" data-identifier="expand"></ion-icon>
 </div>`;
+
+let templateButton = () => `<div class="buttonLevels" onclick="lastInsertion()">
+Prosseguir para criar níveis
+</div>`
 
 function openQuestions(icon){   /*Changes the questions box when the icon is clicked*/
     const oldDiv = document.querySelector('.questions');
     const oldNumber = oldDiv.querySelector('span').innerHTML;
+    insertInNewQuizz(oldNumber);
     questionsToQuestion(oldDiv,oldNumber);
     const div = icon.parentNode;
     const number = icon.parentNode.querySelector('span').innerHTML;
@@ -120,9 +124,110 @@ function questionsToQuestion(div,number){
     div.innerHTML = templateQuestion(number);
 }
 
+let newQuizz = {
+	title: "",
+	image: "",
+	questions: [],
+	levels: []
+}
+
 function questionsQuizz(title,image,numberQuestions,levels){
-    console.log(title);
+    newQuizz.title = title;
+    newQuizz.image = image;
+    newQuizz.questions.length = numberQuestions;
+    createObjQuestions(numberQuestions);
+    newQuizz.levels.length = levels;
+    createObjLevels(levels);
+}
+
+function createObjQuestions(numberQuestions) {
+        for (let i=0;i<numberQuestions;i++){
+            newQuizz.questions[i] = {
+            title: "",
+            color: "",
+            answers: [
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                }
+            ]
+        }
+    }
+}
+
+function createObjLevels (levels) {
+    for (let i=0;i<levels;i++){
+        newQuizz.levels[i] = {
+			title: "",
+			image: "",
+			text: "",
+			minValue: 0
+		}
+    }
 }
 
 
+function insertInNewQuizz (i){
+    let j = i-1;
+    let title = `${document.getElementById(`questionText${i}`).value}`;
+    if (title.length < 20){
+        failed();
+    } else {
+        newQuizz.questions[j].title = title;
+    }
+    let color = `${document.getElementById(`questionColor${i}`).value}`;
+    newQuizz.questions[j].color = color;
+    let rightAnswer = `${document.getElementById(`rightAnswer${i}`).value}`;
+    if (rightAnswer === ""){
+        failed();
+    } else {
+        newQuizz.questions[j].answers[0].text = rightAnswer;
+    }
+    let rightImage = `${document.getElementById(`rightImage${i}`).value}`;
+    if (checkUrl(rightImage)){
+        failed();
+    } else {
+        newQuizz.questions[j].answers[0].image = rightImage;
+    }
+    for (let k=1;k<=3;k++){
+        let wrongAnswer = `${document.getElementById(`wrongAnswer${k}${i}`).value}`;       
+        newQuizz.questions[j].answers[k].text = wrongAnswer;
+        let wrongImage = `${document.getElementById(`wrongImage${k}${i}`).value}`;
+        newQuizz.questions[j].answers[k].image = wrongImage;
+    }
+    console.log(newQuizz)
+    verifyAnswers(j);
+}
 
+function lastInsertion () {
+    const lastNumber = document.querySelector('.questions span').innerHTML;
+    insertInNewQuizz(lastNumber); 
+    levelsQuizz();  
+}
+
+function verifyAnswers(j){
+    for (let i=0;i<2;i++){
+        if (newQuizz.questions[j].answers[i].text === ""){
+            failed();
+        }
+        if (checkUrl(newQuizz.questions[j].answers[i].image)){
+            failed();
+        }
+    }
+}
