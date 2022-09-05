@@ -245,18 +245,6 @@ input {
     font-weight: 400;
     font-size: 19px;
 }
-label {
-    width: 91%;
-    height: 46px;
-    background: #FFFFFF;
-    border: 1px solid #D1D1D1;
-    border-radius: 5px;
-    font-style: italic;
-    margin-bottom: 14px;
-    color: #BABABA;
-    font-weight: 400;
-    font-size: 19px;
-}
 
 .button {
     position: absolute;
@@ -335,6 +323,7 @@ textarea{
     font-weight: 400;
     font-size: 19px;
     font-style: italic;
+    color:#BABABA
 }
 
 .levels {
@@ -377,4 +366,31 @@ textarea{
         line-height: 15px;
     }
 
+}
+
+@media (min-width: 1100px){
+    .basic-infos{
+        width: 600px;
+        height: 265px;
+        margin: 0 auto;
+        position: inherit;
+    }
+    .button{
+        position: inherit;
+        margin: 40px auto 0 auto;
+    }
+    .questions {
+        height: 825px;
+        width: 600px;
+        margin: 0 auto 20px auto;
+    }
+    .level,
+    .question{
+        width: 600px;
+        margin: 0 auto 22px auto;
+    }
+    .levels {
+        width: 600px;
+        margin: 0 auto 20px auto;
+    }
 }

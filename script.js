@@ -1,5 +1,5 @@
 
-/*function changeToTest(){
+function changeToTest(){
     alert('adicionar a mudança para o jogo do quizz selecionado')
     document.querySelector('.screen2').classList.remove('hide')
     document.querySelector('.firstscreen').classList.add('hide')
@@ -31,7 +31,7 @@ function putApiQuizz(answer){
     </li>`
     }
 }
-getApiQuizz()*/
+getApiQuizz()   
 
 function createQuizz(){           /*collects the values needed for the creation of the Quizz*/
     const title = `${document.getElementById('title').value}`;
@@ -71,6 +71,8 @@ function checkUrl(string) {
    }
  }
 
+ const colorVer = /^#[0-9A-F]{6}$/i;
+
 function screen32(numberQuestions){   
     let i=1;
     const showScreen = document.querySelector('.screen32');
@@ -87,8 +89,7 @@ function screen32(numberQuestions){
 let templateQuestions = (i) => `<div class="questions" data-identifier="question-form">
 <h2>Pergunta <span>${i}</span></h2>
     <input id ="questionText${i}" type="text" placeholder="Texto da pergunta">
-    <input id="questionColor${i}" type="color" value="#ffffff">
-    <label for="questionColor${i}">Cor de fundo da pergunta</label>
+    <input id="questionColor${i}" type="text" placeholder="Cor de fundo da pergunta">
 <h2>Resposta Correta</h2>
     <input id="rightAnswer${i}" type="text" placeholder="Resposta correta">
     <input id="rightImage${i}" type="text" placeholder="URL da imagem">
@@ -198,7 +199,12 @@ function insertQuestion (i){
         newQuizz.questions[j].title = title;
     }
     let color = `${document.getElementById(`questionColor${i}`).value}`;
-    newQuizz.questions[j].color = color;
+    if(colorVer.test(color)){
+        newQuizz.questions[j].color = color;
+    } else {
+        failed();
+        return;
+    }
     let rightAnswer = `${document.getElementById(`rightAnswer${i}`).value}`;
     if (rightAnswer === ""){
         failed();
@@ -231,14 +237,12 @@ function insertQuestion (i){
     }
     let wrongAnswer2 = `${document.getElementById(`wrongAnswer2${i}`).value}`; 
     let wrongImage2 = `${document.getElementById(`wrongImage2${i}`).value}`;
-    if ((wrongAnswer2&&wrongImage2)  !== null){
+    if ((wrongAnswer2&&wrongImage2)  !== ""){
         addAnswer(2,j,wrongAnswer2,wrongImage2);
     } 
     let wrongAnswer3 = `${document.getElementById(`wrongAnswer3${i}`).value}`; 
     let wrongImage3 = `${document.getElementById(`wrongImage3${i}`).value}`;
-    console.log(wrongAnswer3)
-    console.log(wrongImage3)
-    if ((wrongAnswer3&&wrongImage3)  !== null){
+    if ((wrongAnswer3&&wrongImage3)  !== ""){
         addAnswer(3,j,wrongAnswer3,wrongImage3);
     } 
     console.log(newQuizz);
@@ -284,7 +288,7 @@ function screen33(){
     showScreen.innerHTML += templateButtonLevels();
 }
 
-let templateLevels = (i) => `<div class="levels">
+let templateLevels = (i) => `<div class="levels" data-identifier="level">
     <h2>Nível <span>${i}</span></h2>
     <input id="title${i}" type="text" placeholder="Título do nível">
     <input id="number${i}" type="number" placeholder="% de acerto mínima">
@@ -372,8 +376,7 @@ function finalizeQuizz(){
     }
     const lastNumber = document.querySelector('.levels span').innerHTML;
     insertLevel(lastNumber); 
-    postQuizz();
-    //screen34();  
+    postQuizz(); 
 }
 
 function verifyLevels(){
@@ -392,12 +395,22 @@ function verifyLevels(){
 }
 
 function postQuizz(){
-    console.log(newQuizz)
     const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', newQuizz);
     promisse.then(postedQuizz)
     promisse.catch(errQuizz);
 }
 
-let postedQuizz = (report) => console.log(report);
+let postedQuizz = (report) => screen34(report.data);
+
 
 let errQuizz = (error) => console.log(error);
+
+function screen34(Quizz){      /* função pra finalizar o sucesso do quizz*/
+    document.querySelector('.screen33').classList.add('hide');
+    document.querySelector('.screen34').classList.remove('hide');
+    console.log(Quizz);
+    //a fazer:
+    //layut da caixinha do quizz
+    //botao para jogar o quizz
+    //botao da home
+}
