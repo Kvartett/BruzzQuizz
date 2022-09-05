@@ -9,14 +9,14 @@
     <title>Buzz Quizz</title>
 </head>
 <body>
-    <header>
+    <header onclick="returnMenu()">
         <div>
             <h1>BuzzQuizz</h1>
         </div>
         
     </header>      
     <main >
-        <div class="firstscreen hide">
+        <div class="firstscreen">
             <div class="personalquizz">
                 <p>Você não criou nenhum quizz ainda :(</p>
                 <button onclick="changeScreen31()">Criar Quizz</button>
@@ -27,56 +27,62 @@
                     <ion-icon onclick="changeScreen31()" name="add-circle-sharp"></ion-icon>
                 </div>
                 <ul class="allpersonalquizz">
-                    <li onclick="changeToTest()" class="serverquizz">
+                    <li onclick="changeToTest(this)" class="serverquizz">
                         <div class="shadow">
                             <div class="namequizz">
                             aoba
-                            
+
                             </div>
                         </div>   
                         <img src="./img/cat.png" alt="">
-                        
+
                     </li>
                 </ul>
-                
-                
             </div>
             <div class="allQuizz">
                 <h1>Todos os Quizzes</h1>
             </div>
             <ul class="quizzlist">
-                
-            
+
+
             </ul>
         </div>
-       
-    </main>
+        </main>
+
     
-    <div class="screen2"></div>
-        <div class="screen31 hide">
-            <div class="title">
-            <h2>
+    <div class="screen2 hide"></div>
+    <div class="screen31 hide">
+        <div class="title">
+        <h2>
                 Comece pelo começo
-            </h2>
-            </div>
-            <!--<div class="content">-->
-            <div class="basic-infos">
-                <input type="text" id="title" placeholder="Título do seu quizz">
-                <input type="text" id="image" placeholder="URL da imagem do seu quizz"> 
-                <input type="text" id="questions" placeholder="Quantidade de perguntas do quizz">
-                <input type="text" id="levels" placeholder="Quantidade de níveis do quizz">
-            </div>
-            <div class="button" onclick="createQuizz()">
-                    Prosseguir para criar perguntas
-            </div>
-            <!--</div>-->
+        </h2>
         </div>
-        <div class="screen32 hide">
-            <div class="title">
-            <h2>Crie suas perguntas</h2>
-            </div>
+        <div class="basic-infos">
+            <input type="text" id="title" placeholder="Título do seu quizz">
+            <input type="text" id="image" placeholder="URL da imagem do seu quizz"> 
+            <input type="text" id="questions" placeholder="Quantidade de perguntas do quizz">
+            <input type="text" id="levels" placeholder="Quantidade de níveis do quizz">
         </div>
-    
+        <div class="button" onclick="createQuizz()">
+                Prosseguir para criar perguntas
+        </div>
+    </div>
+    <div class="screen32 hide">
+        <div class="title">
+        <h2>Crie suas perguntas</h2>
+        </div>
+    </div>
+    <div class="screen33 hide">
+        <div class="title">
+            <h2>Agora,decida os níveis!</h2>
+        </div>
+    </div>
+    <div class="screen34 hide">
+        <div class="title">
+            <h2>Seu quizz está pronto!</h2>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script src="./script.js"></script>
