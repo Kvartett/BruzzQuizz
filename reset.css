@@ -20,14 +20,9 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-
 	/*font: inherit;*/
-
-	font: inherit;
-
-	font: inherit;
-
 	vertical-align: baseline;
+	marker: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
